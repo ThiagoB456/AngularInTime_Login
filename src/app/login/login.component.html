@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-content>
+
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+
+      <div class="header">
+        <span class="login100-form-title p-b-49">Entrar </span>
+      </div>
+
+      <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+        <div class="emailInput">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input
+              formControlName="email"
+              matInput
+              placeholder="Coloque o seu e-mail" required
+            />
+            <mat-error *ngIf="!loginForm.controls['email'].valid">
+                E-mail é obrigatório!
+              </mat-error>
+          </mat-form-field>
+        </div>
+          <div>
+
+            <mat-form-field class="full-width" appearance="outline">
+
+              <mat-label>Senha</mat-label>
+                <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
+                  <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+
+                    <mat-icon>
+                      {{hide ? 'visibility_off' : 'visibility'}}
+                    </mat-icon>
+
+                  </button>
+              <mat-error *ngIf="!loginForm.controls['password'].valid"> Senha é obrigatória!</mat-error>
+
+            </mat-form-field>
+
+            <span>
+              <a class="text-link" class="aLink" routerLink="/auth/forgot-password">esqueceu a senha?</a>
+            </span>
+
+          </div>
+          <button class="login100-form-btn ">ENTRAR</button>
+      </form>
+
+    </div>
+
+  </mat-card-content>
+
+</mat-card>
